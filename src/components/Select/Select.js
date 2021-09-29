@@ -14,8 +14,7 @@ const Wrapper = styled.div`
   display: block;
 
   :focus {
-    border: 2px solid Highlight;
-    padding: 10px 14px 10px 14px;
+    outline: 2px solid Highlight;
   }
 
   :hover {
