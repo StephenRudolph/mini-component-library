@@ -16,15 +16,27 @@ const Wrapper = styled.div`
 
 const ProgressFill = styled.div`
   background-color: ${COLORS.primary};
-  border-radius: ${(({value}) => value <= 98 ? '4px 0px 0px 4px' : (value <= 99.8 ? '4px 2px 2px 4px' : '4px'))};;
+  border-radius: 4px 0px 0px 4px;
   width: ${({value}) => value + '%'};
   height: 100%;
 `;
 
+const BarWrapper = styled.div`
+  overflow: hidden; 
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+`;
+
 const ProgressBar = ({ value, size }) => {
-  return <Wrapper size={size} role="progressbar" aria-valuenow="{value}" aria-valuemin="0" aria-valuemax="100">
-    <ProgressFill size={size} value={value} />
-  </Wrapper>;
+  return (
+    <Wrapper size={size} role="progressbar" aria-valuenow={value} aria-valuemin="0" aria-valuemax="100">
+      <BarWrapper value={value}>
+        <ProgressFill size={size} value={value} />
+      </BarWrapper>
+      <VisuallyHidden>{value}%</VisuallyHidden>
+    </Wrapper>
+  );
 };
 
 export default ProgressBar;

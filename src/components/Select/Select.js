@@ -5,13 +5,14 @@ import { COLORS } from '../../constants';
 import Icon from '../Icon';
 
 const Wrapper = styled.div`
-  width: fit-content;
+  width: max-content;
   background-color: ${COLORS.transparentGray15};
   color: ${COLORS.gray700};
   border-radius: 8px;
   padding: 12px 16px 12px 16px;
   white-space: nowrap;
   display: block;
+  position: relative;
 
   :focus {
     outline: 2px solid Highlight;
@@ -27,11 +28,11 @@ const Wrapper = styled.div`
     font-size: 16px;
     -webkit-appearance: none;
     appearance: none;
-    display: inline-block;
+    display: block;
     background: none;
     color: inherit;
     border: none;
-    padding-right: 24px;
+    padding-right: 52px;
 
     :hover, :focus {
       outline: none;
@@ -40,7 +41,13 @@ const Wrapper = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 10px;
+  margin: auto;
+  height: 24px;
+  pointer-events: none;
 `;
 
 const Select = ({ label, value, onChange, children }) => {
@@ -50,7 +57,7 @@ const Select = ({ label, value, onChange, children }) => {
         {children}
       </select>
       <IconWrapper>
-        <Icon id="chevron-down" strokeWidth="2" size="12" />
+        <Icon id="chevron-down" strokeWidth={1} size={24} />
       </IconWrapper>
     </Wrapper>
   );
